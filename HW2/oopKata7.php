@@ -1,4 +1,5 @@
 <?php
+
 class Person
 {
     const species = "Homo Sapiens";
@@ -29,8 +30,10 @@ class Person
     }
 }
 
-class ComputerProgrammer extends Person {
-    public function introduce() {
+class ComputerProgrammer extends Person
+{
+    public function introduce()
+    {
         return parent::introduce() . " and I am a {$this->occupation}";
     }
 }

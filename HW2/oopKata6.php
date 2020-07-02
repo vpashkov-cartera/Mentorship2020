@@ -1,4 +1,5 @@
 <?php
+
 class Person
 {
     protected $name;
@@ -13,34 +14,41 @@ class Person
         $this->occupation = $occupation;
     }
 
-    public function get_name() {
+    public function get_name()
+    {
         return $this->name;
     }
 
-    public function set_name($name) {
+    public function set_name($name)
+    {
         $this->validate(['name' => $name]);
         $this->name = $name;
     }
 
-    public function get_age() {
+    public function get_age()
+    {
         return $this->age;
     }
 
-    public function set_age($age) {
+    public function set_age($age)
+    {
         $this->validate(['age' => $age]);
         $this->age = $age;
     }
 
-    public function get_occupation() {
+    public function get_occupation()
+    {
         return $this->occupation;
     }
 
-    public function set_occupation($occupation) {
+    public function set_occupation($occupation)
+    {
         $this->validate(['occupation' => $occupation]);
         $this->occupation = $occupation;
     }
 
-    private function validate(array $targets) {
+    private function validate(array $targets)
+    {
         if (array_key_exists('name', $targets) && !is_string($targets['name'])) {
             throw new InvalidArgumentException("Name must be a string!");
         }
