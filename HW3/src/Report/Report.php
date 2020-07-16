@@ -285,7 +285,7 @@ class Report
         if ($this->charsFrequency) {
             $report .= '<div>
                             <strong>Frequency of characters:</strong>
-                            <ul>'. $this->wordsCount;
+                            <ul>';
 
             foreach ($this->charsFrequency as $char => $frequency) {
                 $report .= '<li>Char - '. $char .' occurs '. $frequency . '</li>';
