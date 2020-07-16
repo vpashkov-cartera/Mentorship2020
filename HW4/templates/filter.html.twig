@@ -1,0 +1,25 @@
+<div class="col-sm-4 filters">
+    <div>
+        <h3>Books per page:</h3>
+        <form id="form-pagination" action="inc/filter.php" method="POST">
+            <input name="books_per_page" type="number" min="1" max="6" value="{{ pagesInputValue }}">
+            <button type="submit" class="btn btn-info">Apply</button>
+        </form>
+    </div>
+    <div>
+        <h3>Search a book:</h3>
+        <form id="form-search" action="inc/filter.php" method="POST">
+            <input name="search" type="text" required>
+            <button type="submit" class="btn btn-info">Search</button>
+        </form>
+    </div>
+    <div>
+        <h3>Order by:</h3>
+        <form action="inc/filter.php" class="order_by" method="POST">
+            <p>
+                <label><input name="price_name" type="radio" value="price" {{ checkOrderCookies('price') }}>Price</label>
+                <label><input name="price_name" type="radio" value="name" {{ checkOrderCookies('name') }}>Name</label>
+            </p>
+        </form>
+    </div>
+</div>
