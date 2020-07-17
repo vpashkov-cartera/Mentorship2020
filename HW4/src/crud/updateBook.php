@@ -2,7 +2,7 @@
 require_once('../../inc/bootstrap.php');
 
 if (!isset($_POST['id'])) {
-    return;
+    header("Location: ../../index.php");
 }
 
 try {
@@ -23,6 +23,8 @@ try {
         ->setPrice($_POST['price'] ?? 0);
 
     $entityManager->flush();
+
+    header("Location: ../../index.php");
 } catch (Throwable $exception) {
     echo "Error occurs:" . $exception->getMessage();
 }

@@ -141,4 +141,12 @@ class Book
     {
         return $this->price;
     }
+
+    /**
+     * @return int
+     */
+    public function getIsbn()
+    {
+        return $this->isbn;
+    }
 }

@@ -12,7 +12,7 @@ try {
     $entityManager->persist($book);
     $entityManager->flush();
 
-    echo "Created Book with ID " . $book->getId() . "\n";
+    header("Location: ../../index.php");
 } catch (Throwable $exception) {
     echo "Error occurs:" . $exception->getMessage() . "\n";
 }

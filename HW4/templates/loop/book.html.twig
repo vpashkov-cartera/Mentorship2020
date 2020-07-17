@@ -16,5 +16,17 @@
         <p class="book_price">PRICE:
             <span>{{ book['price'] }}</span>
         </p>
+
+        <p class="book_url">
+            <span>URL: </span>
+            <a target="_blank" href="/edit.php?id={{ book['id'] }}">
+                Edit
+            </a>
+        </p>
+
+        <form action="/src/crud/deleteBook.php" method="POST">
+            <input type="hidden" name="id" value="{{ book['id'] }}">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
     </div>
 </div>
