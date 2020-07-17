@@ -1,7 +1,6 @@
 <?php
 
-require_once("vendor/autoload.php");
-require_once("inc/functions.php");
+require_once('inc/functions.php');
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/templates');
 $twig = new \Twig\Environment($loader);
@@ -31,6 +30,5 @@ echo $twig->render('main.html.twig', [
     'pagesInputValue' => $pagesInputValue,
     'searchResults' => $searchResults,
     'currentPage' => $currentPage,
-    'bookTags' => $bookTags,
     'pageCount' => $pageCount
 ]);

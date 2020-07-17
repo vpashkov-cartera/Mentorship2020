@@ -13,23 +13,15 @@
                     <div class="container-fluid">
                         {% if booksToDisplay|length > 0 %}
                             <div class="row message">
-
                                 {% if app.request.session.has('books_search') %}
                                     <div class="col-12">
-                                        {% if searchResults == true %}
-
-                                            <div>You have been searching the
-                                                <span>"{{ app.request.session.get('books_search') }}"</span>
-                                            </div>
-                                            <form action="inc/filter.php" method="POST">
-                                                <input name="reset_search" type="hidden">
-                                                <button type="submit" class="btn btn-danger">Reset results</button>
-                                            </form>
-
-                                        {% else %}
-                                            {{ app.session.flash('books_search') }}
-                                            <div>Your search returned no results</div>
-                                        {% endif %}
+                                        <div>You have been searching the
+                                            <span>"{{ app.request.session.get('books_search') }}"</span>
+                                        </div>
+                                        <form action="inc/filter.php" method="POST">
+                                            <input name="reset_search" type="hidden">
+                                            <button type="submit" class="btn btn-danger">Reset results</button>
+                                        </form>
                                     </div>
                                 {% endif %}
                             </div>
