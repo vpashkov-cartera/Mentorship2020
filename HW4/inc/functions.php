@@ -14,8 +14,8 @@ $qb = $entityManager->createQueryBuilder()
 
 /** Books search */
 if (isset($_SESSION['books_search'])) {
-    $qb->where('b.name = ?1')
-        ->setParameter(1, $_SESSION['books_search']);
+    $qb->where('b.name LIKE ?1')
+        ->setParameter(1, $_SESSION['books_search'] . '%');
 }
 
 /** Order BY */
