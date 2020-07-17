@@ -23,7 +23,7 @@ try {
 
 echo $twig->render('edit.html.twig', [
     'bookName' => $book->getName(),
-    'bookId' => $book->getName(),
+    'bookId' => $book->getId(),
     'bookIsbn' => $book->getIsbn(),
     'bookUrl' => $book->getUrl(),
     'bookPoster' => $book->getPoster(),
