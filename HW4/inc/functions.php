@@ -5,8 +5,6 @@ require_once('bootstrap.php');
 
 $pagesInputValue = isset($_SESSION['books_per_page']) ? $_SESSION['books_per_page'] : 6;
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-$offset = ($currentPage - 1) * $pagesInputValue;
-$booksToDisplay = [];
 
 $qb = $entityManager->createQueryBuilder()
     ->select('b')
@@ -26,10 +24,28 @@ if (isset($_COOKIE['price_name'])) {
     $qb->addCriteria($criteria);
 }
 
-$booksToDisplay = $qb->getQuery()->getArrayResult();
+$booksToDisplay = paginate(
+    $qb->getQuery()->setHydrationMode(\Doctrine\ORM\Query::HYDRATE_ARRAY),
+    $currentPage,
+    $pagesInputValue
+);
 
 /** PAGES FOR PAGINATION */
-$pageCount = ceil(count($booksToDisplay) / $pagesInputValue);
+$pageCount = ceil($booksToDisplay->count() / $pagesInputValue);
 
-/** BOOKS ARRAY FOR CURRENT PAGE */
-$booksToDisplay = array_slice($booksToDisplay, $offset, $pagesInputValue);
+/**
+ * @param $dql
+ * @param int $page
+ * @param int $limit
+ * @return \Doctrine\ORM\Tools\Pagination\Paginator
+ */
+function paginate($dql, $page = 1, $limit = 5)
+{
+    $paginator = new \Doctrine\ORM\Tools\Pagination\Paginator($dql);
+
+    $paginator->getQuery()
+        ->setFirstResult($limit * ($page - 1)) // Offset
+        ->setMaxResults($limit); // Limit
+
+    return $paginator;
+}
